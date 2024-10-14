@@ -87,22 +87,34 @@ const vehicleData = [
 ];
 
 const PrevArrow = (props) => {
-  const { onClick } = props;
-  return (
-    <span className="material-symbols-outlined arrow left" onClick={onClick}>
-      keyboard_arrow_left
-    </span>
-  );
-};
-
-const NextArrow = (props) => {
-  const { onClick } = props;
-  return (
-    <span className="material-symbols-outlined arrow right" onClick={onClick}>
-      keyboard_arrow_right
-    </span>
-  );
-};
+    const { onClick } = props;
+    return (
+      <span
+        className="material-symbols-outlined arrow left"
+        onClick={(event) => {
+          event.stopPropagation(); 
+        }}
+      >
+        keyboard_arrow_left
+      </span>
+    );
+  };
+  
+  const NextArrow = (props) => {
+    const { onClick } = props;
+    return (
+      <span
+        className="material-symbols-outlined arrow right"
+        onClick={(event) => {
+          event.stopPropagation();
+          onClick();
+        }}
+      >
+        keyboard_arrow_right
+      </span>
+    );
+  };
+  
 
 export default function Latest() {
   const [hovered, setHovered] = useState(null);
@@ -130,6 +142,7 @@ export default function Latest() {
             className="vehicle-card"
             onMouseEnter={() => setHovered(vehicle.id)}
             onMouseLeave={() => setHovered(null)}
+            onClick={() => navigate("/vehicle")}
           >
             <Slider {...sliderSettings}>
               {vehicle.images.map((image, index) => (
