@@ -65,11 +65,17 @@
 .hero-logo-box {
     width: 120px;
     height: 120px;
-    border: 1px solid black;
+    border: 1px solid #B68D40;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.hero-logo-box:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);    
 }
 
 .hero-logo-img {

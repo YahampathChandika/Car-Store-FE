@@ -1,10 +1,21 @@
-// Latest.js
+// showroom.js
 import React, { useState } from "react";
-import "../../assets/css/Latest.css";
+import "../assets/css/Showroom.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useNavigate } from "react-router-dom";
+import bugatti from "../assets/images/bugatti-logo.png";
+import ferrari from "../assets/images/ferrari-logo.png";
+import McLaren from "../assets/images/McLaren-logo.png";
+import lamborghini from "../assets/images/lamborghini-logo.png";
+import porsche from "../assets/images/porsche-logo.png";
+import rolls from "../assets/images/rolls-royce-logo.png";
+import Brabus from "../assets/images/Brabus-Logo.png";
+import maserati from "../assets/images/maserati-logo.png";
+import koenigsegg from "../assets/images/koenigsegg-logo.png";
+import pagani from "../assets/images/pagani-logo.png";
+import benz from "../assets/images/mercedes-benz-logo.png";
 
 const vehicleData = [
   {
@@ -120,10 +131,45 @@ export default function Latest() {
   };
 
   return (
-    <div className="latest-container">
-      <h2 className="latest-title">Latest Arrivals</h2>
-      <hr className="latest-hr"/>
-      <div className="vehicle-grid">
+    <div className="showroom-container">
+      <h2 className="showroom-title">SHOWROOM</h2>
+      <hr className="showroom-hr"/>
+      <div className="hero-logo-container">
+        <div className="hero-logo-box">
+          <img className="hero-logo-img" src={ferrari} alt="Logo" />
+        </div>
+        <div className="hero-logo-box">
+          <img className="hero-logo-img" src={bugatti} alt="Logo" />
+        </div>
+        <div className="hero-logo-box">
+          <img className="hero-logo-img" src={McLaren} alt="Logo" />
+        </div>
+        <div className="hero-logo-box">
+          <img className="hero-logo-img" src={koenigsegg} alt="Logo" />
+        </div>
+        <div className="hero-logo-box">
+          <img className="hero-logo-img" src={maserati} alt="Logo" />
+        </div>
+        <div className="hero-logo-box">
+          <img className="hero-logo-img" src={Brabus} alt="Logo" />
+        </div>
+        <div className="hero-logo-box">
+          <img className="hero-logo-img" src={rolls} alt="Logo" />
+        </div>
+        <div className="hero-logo-box">
+          <img className="hero-logo-img" src={porsche} alt="Logo" />
+        </div>
+        <div className="hero-logo-box">
+          <img className="hero-logo-img" src={lamborghini} alt="Logo" />
+        </div>
+        <div className="hero-logo-box">
+          <img className="hero-logo-img" src={pagani} alt="Logo" />
+        </div>
+        <div className="hero-logo-box">
+          <img className="hero-logo-img" src={benz} alt="Logo" />
+        </div>
+      </div>
+      <div className="vehicle-grid showroom-card-con">
         {vehicleData.map((vehicle) => (
           <div
             key={vehicle.id}
@@ -148,9 +194,6 @@ export default function Latest() {
           </div>
         ))}
       </div>
-      <button onClick={() => navigate("showroom")} className="latest-btn">
-        View Showroom
-      </button>
     </div>
   );
 }

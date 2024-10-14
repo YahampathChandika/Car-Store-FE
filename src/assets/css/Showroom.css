@@ -1,0 +1,25 @@
+.showroom-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 150px 50px;
+}
+
+.showroom-title {
+  font-size: 40px;
+  font-family: "Playfair Display", serif;
+  margin-bottom: 0;
+}
+
+.showroom-hr {
+    margin-bottom: 0;
+    width: 10%;
+    border-width: 1px;
+    border-color: #000000;
+}
+
+.showroom-card-con {
+    margin-top: 80px;
+}
