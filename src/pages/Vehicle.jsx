@@ -1,9 +1,10 @@
 // Vehicle.js
-import React from "react";
+import React, { useState } from "react";
 import Slider from "react-slick";
 import "../assets/css/Vehicle.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Inquire from "../components/modals/Inquire";
 
 const vehicle = {
   id: 1,
@@ -45,6 +46,16 @@ const NextArrow = (props) => {
 };
 
 export default function Vehicle() {
+  const [isModalOpen, setModalOpen] = useState(false); // Modal state
+
+  const handleOpenModal = () => {
+    setModalOpen(true); // Open the modal
+  };
+
+  const handleCloseModal = () => {
+    setModalOpen(false); // Close the modal
+  };
+
   const sliderSettings = {
     dots: true,
     infinite: true,
@@ -61,7 +72,7 @@ export default function Vehicle() {
       <div className="veh-img-con">
         <Slider {...sliderSettings}>
           {vehicle.images.map((image, index) => (
-            <div style={{padding: "0px", margin: "0px"}} key={index}>
+            <div style={{ padding: "0px", margin: "0px" }} key={index}>
               <img src={image} alt={`${vehicle.name} ${index}`} />
             </div>
           ))}
@@ -108,8 +119,12 @@ export default function Vehicle() {
         </div>
         <hr className="veh-details-hr" />
         <p className="veh-price">${vehicle.price}</p>
-        <button className="veh-details-btn">Make An Inquire</button>
+        <button className="veh-details-btn" onClick={handleOpenModal}>
+          Make An Inquire
+        </button>
       </div>
+
+      <Inquire open={isModalOpen} handleClose={handleCloseModal} />
     </div>
   );
 }

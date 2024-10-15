@@ -7,6 +7,7 @@ import './App.css'
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
 // import { store } from './store/Store.js'
+import 'rsuite/Modal/styles/index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

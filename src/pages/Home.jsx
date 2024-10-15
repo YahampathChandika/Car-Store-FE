@@ -4,6 +4,7 @@ import '../assets/css/Home.css';
 import Hero from "../components/home/Hero";
 import Navbar from "../components/common/Navbar";
 import Latest from "../components/home/Latest";
+import BasicModal from "../components/modals/Inquire";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Latest />
+      <BasicModal />
     </div>
   );
 }
