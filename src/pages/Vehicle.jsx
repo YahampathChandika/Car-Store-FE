@@ -69,59 +69,64 @@ export default function Vehicle() {
 
   return (
     <div className="veh-con">
-      <div className="veh-img-con">
-        <Slider {...sliderSettings}>
-          {vehicle.images.map((image, index) => (
-            <div style={{ padding: "0px", margin: "0px" }} key={index}>
-              <img src={image} alt={`${vehicle.name} ${index}`} />
-            </div>
-          ))}
-        </Slider>
+      <div className="veh-name">
+        <p>
+          {vehicle.brand} {vehicle.name}
+        </p>
       </div>
-      <div className="veh-details-con">
-        <div className="veh-name">
-          <p>{vehicle.brand}</p>
-          <p>{vehicle.name}</p>
+
+      <div className="veh-content">
+        <div className="veh-img-con">
+          <Slider {...sliderSettings}>
+            {vehicle.images.map((image, index) => (
+              <div style={{ padding: "0px", margin: "0px" }} key={index}>
+                <img src={image} alt={`${vehicle.name} ${index}`} />
+              </div>
+            ))}
+          </Slider>
         </div>
-        <div className="veh-details">
-          <p className="veh-details-name">Year</p>
-          <p className="veh-details-desc">{vehicle.year}</p>
+        <div className="veh-details-con">
+          <p className="veh-spec">Specification</p>
+          <div className="veh-details">
+            <p className="veh-details-name">Year</p>
+            <p className="veh-details-desc">{vehicle.year}</p>
+          </div>
+          <hr className="veh-details-hr" />
+          <div className="veh-details">
+            <p className="veh-details-name">Type</p>
+            <p className="veh-details-desc">{vehicle.year}</p>
+          </div>
+          <hr className="veh-details-hr" />
+          <div className="veh-details">
+            <p className="veh-details-name">Colour</p>
+            <p className="veh-details-desc">{vehicle.year}</p>
+          </div>
+          <hr className="veh-details-hr" />
+          <div className="veh-details">
+            <p className="veh-details-name">Drive</p>
+            <p className="veh-details-desc">{vehicle.year}</p>
+          </div>
+          <hr className="veh-details-hr" />
+          <div className="veh-details">
+            <p className="veh-details-name">Transmission</p>
+            <p className="veh-details-desc">{vehicle.year}</p>
+          </div>
+          <hr className="veh-details-hr" />
+          <div className="veh-details">
+            <p className="veh-details-name">Fuel type</p>
+            <p className="veh-details-desc">{vehicle.year}</p>
+          </div>
+          <hr className="veh-details-hr" />
+          <div className="veh-details">
+            <p className="veh-details-name">Engine</p>
+            <p className="veh-details-desc">{vehicle.year}</p>
+          </div>
+          <hr className="veh-details-hr" />
+          <p className="veh-price">${vehicle.price}</p>
+          <button className="veh-details-btn" onClick={handleOpenModal}>
+            Make An Inquire
+          </button>
         </div>
-        <hr className="veh-details-hr" />
-        <div className="veh-details">
-          <p className="veh-details-name">Type</p>
-          <p className="veh-details-desc">{vehicle.year}</p>
-        </div>
-        <hr className="veh-details-hr" />
-        <div className="veh-details">
-          <p className="veh-details-name">Colour</p>
-          <p className="veh-details-desc">{vehicle.year}</p>
-        </div>
-        <hr className="veh-details-hr" />
-        <div className="veh-details">
-          <p className="veh-details-name">Drive</p>
-          <p className="veh-details-desc">{vehicle.year}</p>
-        </div>
-        <hr className="veh-details-hr" />
-        <div className="veh-details">
-          <p className="veh-details-name">Transmission</p>
-          <p className="veh-details-desc">{vehicle.year}</p>
-        </div>
-        <hr className="veh-details-hr" />
-        <div className="veh-details">
-          <p className="veh-details-name">Fuel type</p>
-          <p className="veh-details-desc">{vehicle.year}</p>
-        </div>
-        <hr className="veh-details-hr" />
-        <div className="veh-details">
-          <p className="veh-details-name">Engine</p>
-          <p className="veh-details-desc">{vehicle.year}</p>
-        </div>
-        <hr className="veh-details-hr" />
-        <p className="veh-price">${vehicle.price}</p>
-        <button className="veh-details-btn" onClick={handleOpenModal}>
-          Make An Inquire
-        </button>
       </div>
 
       <Inquire open={isModalOpen} handleClose={handleCloseModal} />

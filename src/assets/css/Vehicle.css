@@ -1,9 +1,26 @@
 /* Vehicle.css */
-
 .veh-con {
+  display: flex;
+  flex-direction: column;
+  padding: 200px 100px;
+}
+
+.veh-name {
+  display: flex;
+  align-items: center; 
+}
+
+.veh-name p {
+  font-size: 40px;
+  font-weight: 600;
+  margin-bottom: 40px;
+  background-color: #ffffff;
+  font-family: "Raleway", sans-serif;
+}
+
+.veh-content {
     display: flex;
     gap: 50px;
-    padding: 200px 100px;
   }
   
   .veh-img-con {
@@ -84,23 +101,17 @@
   .veh-details-con {
     width: 30%;
     background-color: #ffffff;
-    padding: 20px 40px;
+    padding: 0px 40px;
     text-align: center;
   }
 
-  .veh-name {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .veh-name p {
-    font-size: 30px;
-    font-weight: 600;
-    margin-bottom: 20px;
-    background-color: #ffffff;
-
-  }
+ .veh-spec {
+   font-size: 30px;
+   font-weight: 500;
+   margin-bottom: 20px;
+   text-align: center;
+   margin-top: -20px;
+ }
 
   .veh-details {
     display: flex;
