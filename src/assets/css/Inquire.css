@@ -40,14 +40,13 @@
   font-size: 20px;
   font-weight: 500;
   padding: 10px 20px;
-  background-color: #ffffff;
-  color: #000000;
+  background-color: #122620;
+  color: #f4ebd0;
   border: black solid 1px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .submit-btn:hover {
-  background-color: #122620;
-  color: #f4ebd0;
+  transform: scale(1.05);
 }

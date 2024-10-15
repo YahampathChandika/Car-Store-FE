@@ -65,6 +65,8 @@ export default function Vehicle() {
     arrows: true,
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
+    autoplay: true,
+    autoplaySpeed: 2000,
   };
 
   return (
@@ -73,6 +75,7 @@ export default function Vehicle() {
         <p>
           {vehicle.brand} {vehicle.name}
         </p>
+        <hr className="veh-name-hr" />
       </div>
 
       <div className="veh-content">

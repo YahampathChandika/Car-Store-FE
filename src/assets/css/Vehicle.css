@@ -2,20 +2,30 @@
 .veh-con {
   display: flex;
   flex-direction: column;
-  padding: 200px 100px;
+  padding: 160px 100px;
 }
 
 .veh-name {
   display: flex;
-  align-items: center; 
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .veh-name p {
   font-size: 40px;
   font-weight: 600;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   background-color: #ffffff;
   font-family: "Raleway", sans-serif;
+}
+
+.veh-name-hr {
+  width: 15%;
+  height: 2px;
+  background-color: #000000;
+  margin-bottom: 60px;
+  margin-top: 0;
 }
 
 .veh-content {
@@ -146,20 +156,21 @@
 
   .veh-details-btn {
     margin-top: 20px;
-    width: 70%;
+    width: 100%;
     height: 50px;
     font-size: 20px;
     font-weight: 500;
     padding: 10px 20px;
-    background-color: #ffffff;
-    color: #000000;
+    background-color: #122620;
+    color: #F4EBD0;
     border: black solid 2px;
     cursor: pointer;
     transition: all 0.3s ease;
   }
 
   .veh-details-btn:hover {
-    background-color: #122620;
-    color: #F4EBD0;
-    border: black solid 2px;
+    /* background-color: #ffffff;
+    color: #000000;
+    border: black solid 2px; */
+    transform: scale(1.05);
   }
