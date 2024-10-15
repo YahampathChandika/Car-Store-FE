@@ -1,9 +1,9 @@
 import React from "react";
+import emailjs from "emailjs-com";
 import {
   Box,
   Modal,
   TextField,
-  Typography,
   Radio,
   RadioGroup,
   FormControlLabel,
@@ -12,6 +12,7 @@ import {
 } from "@mui/material";
 import { useForm, Controller } from "react-hook-form";
 import "../../assets/css/Inquire.css";
+import Swal from "sweetalert2";
 
 const style = {
   position: "absolute",
@@ -29,6 +30,7 @@ const Inquire = ({ open, handleClose }) => {
     handleSubmit,
     control,
     watch,
+    reset,
     formState: { isValid },
   } = useForm({
     mode: "onChange",
@@ -42,9 +44,133 @@ const Inquire = ({ open, handleClose }) => {
     },
   });
 
-  const onSubmit = (data) => {
-    console.log(data);
-    handleClose(); // Close the modal after submission
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.onmouseenter = Swal.stopTimer;
+      toast.onmouseleave = Swal.resumeTimer;
+    },
+  });
+
+  // const onSubmit = async (data) => {
+  //   try {
+  //     console.log(data);
+  //     reset(); 
+  //     handleClose(); 
+
+  //     // Send email to yourself
+  //     await emailjs.send(
+  //       "service_gkxwd7f",
+  //       "template_qcpj1vb",
+  //       {
+  //         to_name: "Yahampath",
+  //         from_name: data.name,
+  //         location: data.location,
+  //         email: data.email,
+  //         phone: data.phone,
+  //         contactMethod: data.contactMethod,
+  //         message: data.message,
+  //       },
+  //       "8rOnRzOsXycyMkeTj"
+  //     );
+
+  //     // Send email to the customer
+  //     await emailjs.send(
+  //       "service_gkxwd7f",
+  //       "template_1m1m27f",
+  //       {
+  //         from_name: data.name,
+  //         location: data.location,
+  //         email: data.email,
+  //         phone: data.phone,
+  //         contactMethod: data.contactMethod,
+  //         message: data.message,
+  //       },
+  //       "8rOnRzOsXycyMkeTj"
+  //     );
+
+  //     // Display success message
+  //     Toast.fire({
+  //       icon: "success",
+  //       title: "Enquiry submitted successfully!",
+  //     });
+  //   } catch (error) {
+  //     // Handle errors and display error message
+  //     console.error("Error sending email:", error);
+  //     Toast.fire({
+  //       icon: "error",
+  //       title: "Failed to submit enquiry. Please try again.",
+  //     });
+  //   }
+  // };
+
+  const onSubmit = async (data) => {
+    try {
+      reset(); // Reset form fields
+      handleClose(); // Close the modal
+
+      // Display loading popup
+      Swal.fire({
+        title: "Sending Inquiry...",
+        allowOutsideClick: false,
+        didOpen: () => {
+          Swal.showLoading(); 
+        },
+      });
+  
+      console.log(data);
+  
+      // Send email to yourself
+      await emailjs.send(
+        "service_gkxwd7f",
+        "template_qcpj1vb",
+        {
+          to_name: "Yahampath",
+          from_name: data.name,
+          location: data.location,
+          email: data.email,
+          phone: data.phone,
+          contactMethod: data.contactMethod,
+          message: data.message,
+        },
+        "8rOnRzOsXycyMkeTj"
+      );
+  
+      // Send email to the customer
+      await emailjs.send(
+        "service_gkxwd7f",
+        "template_1m1m27f",
+        {
+          from_name: data.name,
+          location: data.location,
+          email: data.email,
+          phone: data.phone,
+          contactMethod: data.contactMethod,
+          message: data.message,
+        },
+        "8rOnRzOsXycyMkeTj"
+      );
+  
+      // Close the loading popup and display success message
+      Swal.close();
+      Toast.fire({
+        icon: "success",
+        title: "Inquiry submitted successfully!",
+      });
+  
+    } catch (error) {
+      // Close the loading popup and display error message
+      Swal.close();
+      console.error("Error sending email:", error);
+      Toast.fire({
+        icon: "error",
+        title: "Failed to submit inquiry. Please try again.",
+      });
+    }
   };
 
   return (
@@ -179,10 +305,7 @@ const Inquire = ({ open, handleClose }) => {
           </FormControl>
 
           {/* Submit Button */}
-          <button
-            type="submit"
-            className="submit-btn"
-          >
+          <button type="submit" className="submit-btn">
             Submit
           </button>
         </form>
