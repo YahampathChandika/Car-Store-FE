@@ -51,7 +51,7 @@ const Inquire = ({ open, handleClose }) => {
     <Modal open={open} onClose={handleClose}>
       <Box sx={style}>
         <div className="modal-title-con">
-          Vehicle Enquiry
+          Vehicle Inquiry
           <p className="modal-veh-name">Koenigsegg Regera</p>
         </div>
         <hr className="modal-hr" />
