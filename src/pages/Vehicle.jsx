@@ -81,7 +81,7 @@ export default function Vehicle() {
     <div className="veh-con">
       <div className="veh-name">
         <p>
-          {vehicle.brand} {vehicle.carName}
+          {vehicle.brandName} {vehicle.carName}
         </p>
         <hr className="veh-name-hr" />
       </div>
@@ -125,7 +125,7 @@ export default function Vehicle() {
           <hr className="veh-details-hr" />
           <div className="veh-details">
             <p className="veh-details-name">Fuel type</p>
-            <p className="veh-details-desc">{vehicle.manufacturingYear}</p>
+            <p className="veh-details-desc">{vehicle.fuelType}</p>
           </div>
           <hr className="veh-details-hr" />
           <div className="veh-details">

@@ -56,58 +56,6 @@ const Inquire = ({ open, handleClose }) => {
     },
   });
 
-  // const onSubmit = async (data) => {
-  //   try {
-  //     console.log(data);
-  //     reset(); 
-  //     handleClose(); 
-
-  //     // Send email to yourself
-  //     await emailjs.send(
-  //       "service_gkxwd7f",
-  //       "template_qcpj1vb",
-  //       {
-  //         to_name: "Yahampath",
-  //         from_name: data.name,
-  //         location: data.location,
-  //         email: data.email,
-  //         phone: data.phone,
-  //         contactMethod: data.contactMethod,
-  //         message: data.message,
-  //       },
-  //       "8rOnRzOsXycyMkeTj"
-  //     );
-
-  //     // Send email to the customer
-  //     await emailjs.send(
-  //       "service_gkxwd7f",
-  //       "template_1m1m27f",
-  //       {
-  //         from_name: data.name,
-  //         location: data.location,
-  //         email: data.email,
-  //         phone: data.phone,
-  //         contactMethod: data.contactMethod,
-  //         message: data.message,
-  //       },
-  //       "8rOnRzOsXycyMkeTj"
-  //     );
-
-  //     // Display success message
-  //     Toast.fire({
-  //       icon: "success",
-  //       title: "Enquiry submitted successfully!",
-  //     });
-  //   } catch (error) {
-  //     // Handle errors and display error message
-  //     console.error("Error sending email:", error);
-  //     Toast.fire({
-  //       icon: "error",
-  //       title: "Failed to submit enquiry. Please try again.",
-  //     });
-  //   }
-  // };
-
   const onSubmit = async (data) => {
     try {
       reset(); // Reset form fields
