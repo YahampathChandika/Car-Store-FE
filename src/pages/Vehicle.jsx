@@ -5,6 +5,8 @@ import "../assets/css/Vehicle.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Inquire from "../components/modals/Inquire";
+import { useParams } from "react-router-dom";
+import { useGetVehicleByIdQuery } from "../store/api/vehiclesApi";
 
 const vehicle = {
   id: 1,
@@ -47,6 +49,12 @@ const NextArrow = (props) => {
 
 export default function Vehicle() {
   const [isModalOpen, setModalOpen] = useState(false); // Modal state
+  const { id: vehicleId } = useParams();
+
+  const { data, error, isLoading } = useGetVehicleByIdQuery(vehicleId);
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>Failed to load vehicles!</p>;
+  const vehicle = data?.payload;
 
   const handleOpenModal = () => {
     setModalOpen(true); // Open the modal
@@ -73,7 +81,7 @@ export default function Vehicle() {
     <div className="veh-con">
       <div className="veh-name">
         <p>
-          {vehicle.brand} {vehicle.name}
+          {vehicle.brand} {vehicle.carName}
         </p>
         <hr className="veh-name-hr" />
       </div>
@@ -81,7 +89,7 @@ export default function Vehicle() {
       <div className="veh-content">
         <div className="veh-img-con">
           <Slider {...sliderSettings}>
-            {vehicle.images.map((image, index) => (
+            {vehicle.CarPhotos.map((image, index) => (
               <div style={{ padding: "0px", margin: "0px" }} key={index}>
                 <img src={image} alt={`${vehicle.name} ${index}`} />
               </div>
@@ -92,37 +100,37 @@ export default function Vehicle() {
           <p className="veh-spec">Specification</p>
           <div className="veh-details">
             <p className="veh-details-name">Year</p>
-            <p className="veh-details-desc">{vehicle.year}</p>
+            <p className="veh-details-desc">{vehicle.manufacturingYear}</p>
           </div>
           <hr className="veh-details-hr" />
           <div className="veh-details">
             <p className="veh-details-name">Type</p>
-            <p className="veh-details-desc">{vehicle.year}</p>
+            <p className="veh-details-desc">{vehicle.bodyType}</p>
           </div>
           <hr className="veh-details-hr" />
           <div className="veh-details">
             <p className="veh-details-name">Colour</p>
-            <p className="veh-details-desc">{vehicle.year}</p>
+            <p className="veh-details-desc">{vehicle.exteriorColour}</p>
           </div>
           <hr className="veh-details-hr" />
           <div className="veh-details">
             <p className="veh-details-name">Drive</p>
-            <p className="veh-details-desc">{vehicle.year}</p>
+            <p className="veh-details-desc">{vehicle.driverPosition}</p>
           </div>
           <hr className="veh-details-hr" />
           <div className="veh-details">
             <p className="veh-details-name">Transmission</p>
-            <p className="veh-details-desc">{vehicle.year}</p>
+            <p className="veh-details-desc">{vehicle.transmission}</p>
           </div>
           <hr className="veh-details-hr" />
           <div className="veh-details">
             <p className="veh-details-name">Fuel type</p>
-            <p className="veh-details-desc">{vehicle.year}</p>
+            <p className="veh-details-desc">{vehicle.manufacturingYear}</p>
           </div>
           <hr className="veh-details-hr" />
           <div className="veh-details">
             <p className="veh-details-name">Engine</p>
-            <p className="veh-details-desc">{vehicle.year}</p>
+            <p className="veh-details-desc">{vehicle.engine}</p>
           </div>
           <hr className="veh-details-hr" />
           <p className="veh-price">${vehicle.price}</p>

@@ -16,8 +16,10 @@ import maserati from "../assets/images/maserati-logo.png";
 import koenigsegg from "../assets/images/koenigsegg-logo.png";
 import pagani from "../assets/images/pagani-logo.png";
 import benz from "../assets/images/mercedes-benz-logo.png";
+import { Pagination } from "@mui/material";
+import { useGetVehiclesWithPaginationQuery } from "../store/api/vehiclesApi";
 
-const vehicleData = [
+const cars = [
   {
     id: 1,
     brand: "Bugatti",
@@ -127,10 +129,22 @@ const NextArrow = (props) => {
   );
 };
 
-
 export default function Latest() {
   const [hovered, setHovered] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
+
+  const { data, error, isLoading } =
+    useGetVehiclesWithPaginationQuery(currentPage);
+
+  const handlePageChange = (event, page) => {
+    setCurrentPage(page); // Set the current page when pagination changes
+  };
+
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>Failed to load vehicles!</p>;
+
+  const { cars, pagination } = data?.payload;
 
   const sliderSettings = {
     dots: true,
@@ -146,7 +160,7 @@ export default function Latest() {
   return (
     <div className="showroom-container">
       <h2 className="showroom-title">SHOWROOM</h2>
-      <hr className="showroom-hr"/>
+      <hr className="showroom-hr" />
       <div className="hero-logo-container">
         <div className="hero-logo-box">
           <img className="hero-logo-img" src={ferrari} alt="Logo" />
@@ -183,7 +197,7 @@ export default function Latest() {
         </div>
       </div>
       <div className="vehicle-grid showroom-card-con">
-        {vehicleData.map((vehicle) => (
+        {cars.map((vehicle) => (
           <div
             key={vehicle.id}
             className="vehicle-card"
@@ -192,22 +206,30 @@ export default function Latest() {
             onClick={() => navigate("/vehicle")}
           >
             <Slider {...sliderSettings}>
-              {vehicle.images.map((image, index) => (
+              {vehicle.CarPhotos.map((image, index) => (
                 <div key={index}>
-                  <img src={image} alt={`${vehicle.name} ${index}`} />
+                  <img src={image} alt={`${vehicle.carName} ${index}`} />
                 </div>
               ))}
             </Slider>
             <div className="vehicle-info">
-              <h3>{vehicle.brand}</h3>
+              <h3>{vehicle.brandName}</h3>
               <p>
-                {vehicle.name} - {vehicle.year}
+                {vehicle.carName} - {vehicle.manufacturingYear}
               </p>
-              <p className="price">{vehicle.price}</p>
+              <p className="price">${vehicle.price}</p>
             </div>
           </div>
         ))}
       </div>
+      <Pagination
+        count={pagination.totalPages}
+        page={pagination.currentPage}
+        onChange={handlePageChange}
+        variant="outlined"
+        size="large"
+        shape="rounded"
+      />
     </div>
   );
 }

@@ -5,6 +5,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useNavigate } from "react-router-dom";
+import { useGetLatestVehiclesQuery } from "../../store/api/vehiclesApi";
 
 const vehicleData = [
   {
@@ -87,38 +88,42 @@ const vehicleData = [
 ];
 
 const PrevArrow = (props) => {
-    const { onClick } = props;
-    return (
-      <span
-        className="material-symbols-outlined arrow left"
-        onClick={(event) => {
-          event.stopPropagation(); 
-        }}
-      >
-        keyboard_arrow_left
-      </span>
-    );
-  };
-  
-  const NextArrow = (props) => {
-    const { onClick } = props;
-    return (
-      <span
-        className="material-symbols-outlined arrow right"
-        onClick={(event) => {
-          event.stopPropagation();
-          onClick();
-        }}
-      >
-        keyboard_arrow_right
-      </span>
-    );
-  };
-  
+  const { onClick } = props;
+  return (
+    <span
+      className="material-symbols-outlined arrow left"
+      onClick={(event) => {
+        event.stopPropagation();
+      }}
+    >
+      keyboard_arrow_left
+    </span>
+  );
+};
+
+const NextArrow = (props) => {
+  const { onClick } = props;
+  return (
+    <span
+      className="material-symbols-outlined arrow right"
+      onClick={(event) => {
+        event.stopPropagation();
+        onClick();
+      }}
+    >
+      keyboard_arrow_right
+    </span>
+  );
+};
 
 export default function Latest() {
   const [hovered, setHovered] = useState(null);
+  const { data, error, isLoading } = useGetLatestVehiclesQuery();
+  const vehicleData = data?.payload;
   const navigate = useNavigate();
+
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>Failed to load vehicles!</p>;
 
   const sliderSettings = {
     dots: true,
@@ -134,7 +139,7 @@ export default function Latest() {
   return (
     <div className="latest-container">
       <h2 className="latest-title">Latest Arrivals</h2>
-      <hr className="latest-hr"/>
+      <hr className="latest-hr" />
       <div className="vehicle-grid">
         {vehicleData.map((vehicle) => (
           <div
@@ -142,21 +147,21 @@ export default function Latest() {
             className="vehicle-card"
             onMouseEnter={() => setHovered(vehicle.id)}
             onMouseLeave={() => setHovered(null)}
-            onClick={() => navigate("/vehicle")}
+            onClick={() => navigate(`/vehicle/${vehicle.id}`)}
           >
             <Slider {...sliderSettings}>
-              {vehicle.images.map((image, index) => (
+              {vehicle.CarPhotos.map((image, index) => (
                 <div key={index}>
                   <img src={image} alt={`${vehicle.name} ${index}`} />
                 </div>
               ))}
             </Slider>
             <div className="vehicle-info">
-              <h3>{vehicle.brand}</h3>
+              <h3>{vehicle.brandName}</h3>
               <p>
-                {vehicle.name} - {vehicle.year}
+                {vehicle.carName} - {vehicle.manufacturingYear}
               </p>
-              <p className="price">{vehicle.price}</p>
+              <p className="price">${vehicle.price}</p>
             </div>
           </div>
         ))}
