@@ -75,7 +75,10 @@ export default function Vehicle() {
     nextArrow: <NextArrow />,
     autoplay: true,
     autoplaySpeed: 2000,
+    adaptiveHeight: true, 
+    swipeToSlide: true,
   };
+  
 
   return (
     <div className="veh-con">

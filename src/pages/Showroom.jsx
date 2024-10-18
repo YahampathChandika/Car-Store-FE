@@ -77,7 +77,10 @@ export default function Latest() {
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
     arrows: hovered !== null,
+    adaptiveHeight: true, // Ensures content size adjusts properly
+    swipeToSlide: true,   // Allows smoother sliding
   };
+  
 
   return (
     <div className="showroom-container">
