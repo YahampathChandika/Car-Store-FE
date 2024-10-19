@@ -1,0 +1,94 @@
+/* Footer.css */
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f9fa;
+    padding: 40px;
+    margin-top: 100px;
+  }
+  
+  .footer-details {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .footer-heading {
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #333;
+  }
+  
+  .footer-description {
+    font-size: 18px;
+    font-weight: 300;
+    color: #666;
+    width: 70%;
+    margin: auto;
+  }
+  
+  .footer-info {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+  }
+  
+  .connect-with-us,
+  .quick-links,
+  .assistance {
+    width: 30%;
+  }
+  
+  h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #333;
+  }
+  
+  .social-icons {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .social-icons a {
+    font-size: 30px;
+    color: #666;
+    transition: color 0.3s;
+  }
+  
+  .social-icons a:hover {
+    color: #000;
+  }
+  
+  .quick-links ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .quick-links ul li {
+    margin-bottom: 10px;
+  }
+  
+  .quick-links ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+  }
+  
+  .quick-links ul li a:hover {
+    color: #007bff;
+  }
+  
+  .assistance p {
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .assistance p::before {
+    content: "📞";
+    margin-right: 8px;
+  }
+  
