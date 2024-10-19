@@ -1,7 +1,7 @@
 // Hero.js
 import React from "react";
 import "../../assets/css/Hero.css";
-import video from "../../assets/images/back.webm";
+import video from "../../assets/images/back.mp4";
 import bugatti from "../../assets/images/bugatti-logo.png";
 import ferrari from "../../assets/images/ferrari-logo.png";
 import McLaren from "../../assets/images/McLaren-logo.png";
@@ -22,6 +22,7 @@ export default function Hero() {
           <source src={video} type="video/webm" />
           Your browser does not support the video tag.
         </video>
+        <div className="hero-overlay"></div>
         <div className="hero-content"></div>
       </div>
       <p className="hero-des-1">Welcome to</p>
