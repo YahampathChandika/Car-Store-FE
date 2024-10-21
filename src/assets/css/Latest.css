@@ -1,28 +1,27 @@
 /* Latest.css */
 *:focus {
-    outline: none;
+  outline: none;
 }
 
 .latest-container {
-  padding: 20px 80px;
-  background-color: #F4EBD0;
+  padding: 50px 80px 100px 80px;
+  background-color: #F5F0E1;
   text-align: center;
 }
 
 .latest-title {
-  font-size: 40px;
-  margin-top: 40px;
   margin-bottom: 0;
   font-family: "Playfair Display", serif;
-  font-weight: 500;
+  font-size: 48px;
+  color: #333;
 }
 
 .latest-hr {
-    margin-bottom: 40px;
-    width: 10%;
-    border-width: 1px;
-    border-color: #000000;
-  }
+  margin-bottom: 40px;
+  width: 10%;
+  border-width: 1px;
+  border-color: #000000;
+}
 
 .vehicle-grid {
   display: grid;
@@ -97,7 +96,6 @@
   margin: 5px 0;
   color: #666;
   background-color: transparent;
-
 }
 
 .price {
@@ -107,21 +105,20 @@
 }
 
 .latest-btn {
-    margin-top: 40px;
-    width: 200px;
-    height: 50px;
-    font-size: 20px;
-    font-weight: 500;
-    padding: 10px 20px;
-    background-color: #ffffff;
-    color: rgb(0, 0, 0);
-    border: black solid 2px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+  margin-top: 40px;
+  width: 200px;
+  height: 50px;
+  font-size: 20px;
+  font-weight: 500;
+  padding: 10px 20px;
+  color: #f4ebd0;
+  background-color: #122620;
+  border: black solid 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .latest-btn:hover {
-    background-color: #122620;
-    color: #F4EBD0;
-    border: black solid 2px;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
 }

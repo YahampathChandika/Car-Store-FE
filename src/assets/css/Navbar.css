@@ -13,7 +13,7 @@
 
   .nav-content {
     width: 50%;
-    background-color: #D6AD60;
+    background-color: #B68D40;
     /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     border-radius: 50px;
@@ -29,13 +29,28 @@
   
   .navbar-links a {
     text-decoration: none;
-    color: #122620;
+    color: #1C1C1C;
     font-weight: bold;
     transition: all ease 0.2s;
     font-size: 18px;
   }
   
   .navbar-links a:hover {
-    color: #a37a00;
+    color: #ffffff;
+  }
+  
+  .nav-button {
+    background: none;
+    text-decoration: none;
+    border: none;
+    color: #1C1C1C;
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all ease 0.2s;
+  }
+  
+  .nav-button:hover {
+    color: #ffffff;
   }
   
