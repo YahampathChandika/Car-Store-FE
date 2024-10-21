@@ -42,22 +42,22 @@ export default function Latest() {
   const vehicleData = data?.payload;
   const navigate = useNavigate();
 
+  console.log(data);
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Failed to load vehicles!</p>;
 
-const sliderSettings = {
-  dots: true,
-  infinite: true,
-  speed: 500,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  prevArrow: <PrevArrow />,
-  nextArrow: <NextArrow />,
-  arrows: hovered !== null,
-  adaptiveHeight: true, // Ensures content size adjusts properly
-  swipeToSlide: true,   // Allows smoother sliding
-};
-
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    prevArrow: <PrevArrow />,
+    nextArrow: <NextArrow />,
+    arrows: hovered !== null,
+    adaptiveHeight: true, // Ensures content size adjusts properly
+    swipeToSlide: true, // Allows smoother sliding
+  };
 
   return (
     <div className="latest-container">
@@ -75,16 +75,22 @@ const sliderSettings = {
             <Slider {...sliderSettings}>
               {vehicle.CarPhotos.map((image, index) => (
                 <div key={index}>
-                  <img src={image} alt={`${vehicle.name} ${index}`} />
+                  <img src={image} alt={`${vehicle.carName} ${index}`} />
                 </div>
               ))}
             </Slider>
             <div className="vehicle-info">
-              <h3>{vehicle.brandName}</h3>
-              <p>
-                {vehicle.carName} - {vehicle.manufacturingYear}
-              </p>
-              <p className="price">${vehicle.price}</p>
+              <div>
+                <h3>{vehicle.brandName}</h3>
+                <p>
+                  {vehicle.carName} - {vehicle.manufacturingYear}
+                </p>
+                <p className="price">${vehicle.price}</p>
+              </div>
+              <img
+                src={vehicle.brandImage}
+                alt={vehicle.brandName}
+              />
             </div>
           </div>
         ))}

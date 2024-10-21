@@ -33,3 +33,32 @@
   align-items: center;
   font-size: 20px;
 }
+
+.hero-logo-img {
+  transition: transform 0.3s ease, opacity 0.3s ease; 
+}
+
+.hero-logo-img.active {
+  transform: scale(1.1); 
+  opacity: 1; 
+}
+
+.hero-logo-box {
+  width: 120px;
+  height: 120px;
+  border: 1px solid #B68D40;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.hero-logo-box:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);    
+}
+
+.hero-logo-box.active {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Box shadow when active */
+  transform: scale(1.05); /* Slightly enlarge the active box */
+}
