@@ -39,3 +39,18 @@
     color: #a37a00;
   }
   
+  .nav-button {
+    background: none;
+    text-decoration: none;
+    border: none;
+    color: #122620;
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all ease 0.2s;
+  }
+  
+  .nav-button:hover {
+    color: #a37a00;
+  }
+  

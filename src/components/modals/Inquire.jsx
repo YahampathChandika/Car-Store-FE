@@ -69,9 +69,7 @@ const Inquire = ({ open, handleClose }) => {
           Swal.showLoading(); 
         },
       });
-  
-      console.log(data);
-  
+    
       // Send email to yourself
       await emailjs.send(
         "service_gkxwd7f",
