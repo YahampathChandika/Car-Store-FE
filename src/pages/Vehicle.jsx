@@ -143,7 +143,7 @@ export default function Vehicle() {
         </div>
       </div>
 
-      <Inquire open={isModalOpen} handleClose={handleCloseModal} />
+      <Inquire open={isModalOpen} handleClose={handleCloseModal} vehName={`${vehicle.brandName} ${vehicle.carName}`} />
     </div>
   );
 }

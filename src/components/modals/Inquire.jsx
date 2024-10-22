@@ -26,7 +26,9 @@ const style = {
   p: 8,
 };
 
-const Inquire = ({ open, handleClose }) => {
+const Inquire = ({ open, handleClose, vehName }) => {
+
+  console.log(vehName);
   const {
     handleSubmit,
     control,
@@ -127,7 +129,7 @@ const Inquire = ({ open, handleClose }) => {
       <Box sx={style}>
         <div className="modal-title-con">
           Vehicle Inquiry
-          <p className="modal-veh-name">Koenigsegg Regera</p>
+          <p className="modal-veh-name">{vehName}</p>
         </div>
         <hr className="modal-hr" />
         <form onSubmit={handleSubmit(onSubmit)} className="inquire-form">
