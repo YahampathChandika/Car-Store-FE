@@ -12,6 +12,7 @@ import {
 } from "../store/api/vehiclesApi";
 import { Grid } from "react-loader-spinner";
 import Footer from "../components/common/Footer";
+import nodataImg from "../assets/images/nodata.svg"
 
 const PrevArrow = (props) => {
   const { onClick } = props;
@@ -90,7 +91,6 @@ export default function Showroom() {
                 selectedBrandId === brand.id ? "active" : ""
               }`} // Apply active class
               onClick={() => {
-                // Toggle the selected brand
                 setSelectedBrandId(
                   selectedBrandId === brand.id ? null : brand.id
                 );
@@ -120,7 +120,8 @@ export default function Showroom() {
 
         {error && (
           <div className="error-message">
-            <p>Failed to load vehicles. Please try again later.</p>
+            <img src={nodataImg}/>
+            <p>No Data Available!</p>
           </div>
         )}
 
