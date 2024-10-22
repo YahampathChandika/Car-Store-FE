@@ -13,6 +13,7 @@ import {
 import { useForm, Controller } from "react-hook-form";
 import "../../assets/css/Inquire.css";
 import Swal from "sweetalert2";
+import { useAddInquiryMutation } from "../../store/api/vehiclesApi";
 
 const style = {
   position: "absolute",
@@ -38,8 +39,8 @@ const Inquire = ({ open, handleClose }) => {
       name: "",
       location: "",
       email: "",
-      phone: "",
-      message: "",
+      contactNo: "",
+      massage: "",
       contactMethod: "phone",
     },
   });
@@ -56,7 +57,10 @@ const Inquire = ({ open, handleClose }) => {
     },
   });
 
+  const [addInquiry] = useAddInquiryMutation();
   const onSubmit = async (data) => {
+    console.log(data);
+    addInquiry(data);
     try {
       reset(); // Reset form fields
       handleClose(); // Close the modal
@@ -66,10 +70,10 @@ const Inquire = ({ open, handleClose }) => {
         title: "Sending Inquiry...",
         allowOutsideClick: false,
         didOpen: () => {
-          Swal.showLoading(); 
+          Swal.showLoading();
         },
       });
-    
+
       // Send email to yourself
       await emailjs.send(
         "service_gkxwd7f",
@@ -79,13 +83,13 @@ const Inquire = ({ open, handleClose }) => {
           from_name: data.name,
           location: data.location,
           email: data.email,
-          phone: data.phone,
+          phone: data.contactNo,
           contactMethod: data.contactMethod,
-          message: data.message,
+          message: data.massage,
         },
         "8rOnRzOsXycyMkeTj"
       );
-  
+
       // Send email to the customer
       await emailjs.send(
         "service_gkxwd7f",
@@ -94,20 +98,19 @@ const Inquire = ({ open, handleClose }) => {
           from_name: data.name,
           location: data.location,
           email: data.email,
-          phone: data.phone,
+          phone: data.contactNo,
           contactMethod: data.contactMethod,
-          message: data.message,
+          message: data.massage,
         },
         "8rOnRzOsXycyMkeTj"
       );
-  
+
       // Close the loading popup and display success message
       Swal.close();
       Toast.fire({
         icon: "success",
         title: "Inquiry submitted successfully!",
       });
-  
     } catch (error) {
       // Close the loading popup and display error message
       Swal.close();
@@ -188,7 +191,7 @@ const Inquire = ({ open, handleClose }) => {
             />
 
             <Controller
-              name="phone"
+              name="contactNo"
               control={control}
               rules={{ required: "Phone number is required" }}
               render={({ field, fieldState }) => (
@@ -206,7 +209,7 @@ const Inquire = ({ open, handleClose }) => {
           </div>
 
           <Controller
-            name="message"
+            name="massage"
             control={control}
             rules={{ required: "Message is required" }}
             render={({ field, fieldState }) => (
